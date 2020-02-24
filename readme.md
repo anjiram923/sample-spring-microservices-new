@@ -2,6 +2,9 @@
 
 In this project I'm demonstrating you the most interesting features of [Spring Cloud Project](https://spring.io/projects/spring-cloud) for building microservice-based architecture.
 
+- Full details documentation in mentioned URL [[click here](https://piotrminkowski.com/2018/04/26/quick-guide-to-microservices-with-spring-boot-2-0-eureka-and-spring-cloud/)]
+
+
 ## Getting Started 
 Currently you may find here some examples of microservices implementation using different projects from Spring Cloud. All the examples are divided into the branches and described in a separated articles on my blog. Here's a full list of available examples:
 1. Using Spring Cloud Netlix **Eureka** as a discovery server, **Zuul** as a gateway, **OpenFeign** for communication and Spring Cloud Config Server. The example is available in the branch [master](https://github.com/piomin/sample-spring-microservices-new/tree/master). A detailed guide may be find in the following article: [Quick Guide to Microservices with Spring Boot 2.0, Eureka and Spring Cloud](https://piotrminkowski.com/2018/04/26/quick-guide-to-microservices-with-spring-boot-2-0-eureka-and-spring-cloud/)
@@ -24,7 +27,36 @@ Our sample microservices-based system consists of the following modules:
 - **department-service** - a module containing the second of our sample microservices that allows to perform CRUD operation on in-memory repository of departments. It communicates with employee-service. 
 - **organization-service** - a module containing the third of our sample microservices that allows to perform CRUD operation on in-memory repository of organizations. It communicates with both employee-service and organization-service.
 
-The following picture illustrates the architecture described above.
+**Note:**
+----
+- Order of executions: 
+
+        config-service
+        discovery-service
+        proxy-service (or) gateway-service
+        employee-service
+        department-service
+        organization-service
+        
+- Swagger documentation details
+    - HTML document URL
+        - http://localhost:8060/swagger-ui.html
+    - Json document URL
+        - http://localhost:8060/organization/v3/api-docs
+        - http://localhost:8060/department/v3/api-docs
+        - http://localhost:8060/employee/v3/api-docs
+        
+    
+        
+- **The following picture illustrates the architecture described above.**
+------------------------------------
 
 <img src="https://piotrminkowski.files.wordpress.com/2018/04/spring-cloud-1.png" title="Architecture"><br/>
+
+
+
+- **The following diagram for order of execution**
+-----------------
+
+<img src="https://piotrminkowski.files.wordpress.com/2018/04/spring-cloud-31.png?w=700" title="ExecutionOrder"><br/>
 
